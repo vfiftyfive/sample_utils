@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim, vmodl
 import sys
