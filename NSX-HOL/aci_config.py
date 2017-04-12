@@ -22,7 +22,7 @@ def main():
         'vrf': {'vrf_name': 'ctx-01'},
         'bd': {'bd_name': 'bd-default', 'ip': ['172.16.1.1/24', '172.16.2.1/24', '172.16.3.1/24', '172.16.4.1/24',
                                                '172.16.5.1/24', '172.16.6.1/24']},
-        'anp': {'name': 'VTEP'},
+        'anp': {'anp_name': 'VTEP'},
         'epg': {'epg_name': ['s01-VTEP', 's02-VTEP', 's03-VTEP', 's04-VTEP', 's05-VTEP', 's06-VTEP']},
 
     }
@@ -34,7 +34,7 @@ def main():
     cobra.model.fv.RsCtx(fv_bd, tnFvCtxName=tenant_info['vrf']['vrf_name'])
     for bd_ip in tenant_info['bd']['ip']:
         fv_subnet.append(cobra.model.fv.Subnet(fv_bd, ip=bd_ip))
-    fv_ap = cobra.model.fv.Ap(fv_tenant, name=tenant_info['anp']['name'])
+    fv_ap = cobra.model.fv.Ap(fv_tenant, name=tenant_info['anp']['anp_name'])
     for e in tenant_info['epg']['epg_name']:
         fv_aepg.append(cobra.model.fv.AEPg(fv_ap, name=e))
         cobra.model.fv.RsDomAtt(fv_aepg[-1], tDn=vmm_mo[0].dn, resImedcy='immediate',
