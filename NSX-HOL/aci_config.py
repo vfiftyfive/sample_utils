@@ -29,17 +29,17 @@ def main():
 
     pol_uni = cobra.model.pol.Uni('')
     fv_tenant = cobra.model.fv.Tenant(pol_uni, name=tenant_info['tenant']['tenant_name'])
-    fv_ctx = cobra.model.fv.Ctx(fv_tenant, name=tenant_info['vrf']['vrf_name'])
+    cobra.model.fv.Ctx(fv_tenant, name=tenant_info['vrf']['vrf_name'])
     fv_bd = cobra.model.fv.BD(fv_tenant, name=tenant_info['bd']['bd_name'])
-    fv_rs_ctx = cobra.model.fv.RsCtx(fv_bd, tnFvCtxName=tenant_info['vrf']['vrf_name'])
+    cobra.model.fv.RsCtx(fv_bd, tnFvCtxName=tenant_info['vrf']['vrf_name'])
     for bd_ip in tenant_info['bd']['ip']:
         fv_subnet.append(cobra.model.fv.Subnet(fv_bd, ip=bd_ip))
     fv_ap = cobra.model.fv.Ap(fv_tenant, name=tenant_info['anp']['name'])
     for e in tenant_info['epg']['epg_name']:
         fv_aepg.append(cobra.model.fv.AEPg(fv_ap, name=e))
-        fv_rs_dom_att = cobra.model.fv.RsDomAtt(fv_aepg[-1], tDn=vmm_mo[0].dn, resImedcy='immediate',
+        cobra.model.fv.RsDomAtt(fv_aepg[-1], tDn=vmm_mo[0].dn, resImedcy='immediate',
                                                 instrImedcy='immediate', encap='vlan-' + str(vlan_encap_list.pop(0)))
-        fv_rs_bd = cobra.model.fv.RsBd(fv_aepg[-1], tnFvBDName=tenant_info['bd']['bd_name'])
+        cobra.model.fv.RsBd(fv_aepg[-1], tnFvBDName=tenant_info['bd']['bd_name'])
 
     config_request = cobra.mit.request.ConfigRequest()
     config_request.addMo(fv_tenant)
