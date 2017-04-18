@@ -51,6 +51,5 @@ def main():
     config_request.addMo(fv_tenant)
     mo_dir.commit(config_request)
 
-
 if __name__ == '__main__':
     sys.exit(main())
