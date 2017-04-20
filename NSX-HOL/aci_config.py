@@ -14,7 +14,8 @@ def main():
 
     fv_subnet, fv_aepg = [], []
     vmm_domain_name = sys.argv[4]
-    vlan_encap_list = [i for i in range(int(sys.argv[5]), int(sys.argv[6]) + 1)]
+    vlan_encap_list = [i for i in range(int(sys.argv[5]), int(sys.argv[6])+1)]
+    vlan_transit_encap_list = [i for i in range(int(sys.argv[7]), int(sys.argv[8])+1)]
     vmm_mo = mo_dir.lookupByClass('vmmDomP', propFilter='eq(vmmDomP.name,\"' + vmm_domain_name + '\")')
 
     tenant_info = {
@@ -24,7 +25,13 @@ def main():
                                                '172.16.5.1/24', '172.16.6.1/24']},
         'anp': {'anp_name': 'VTEP'},
         'epg': [{ 'epg_name': 's01-VTEP'}, { 'epg_name': 's02-VTEP'}, { 'epg_name': 's03-VTEP'},
-                { 'epg_name': 's04-VTEP'}, {'epg_name': 's05-VTEP'}, { 'epg_name': 's06-VTEP'}]
+                { 'epg_name': 's04-VTEP'}, {'epg_name': 's05-VTEP'}, { 'epg_name': 's06-VTEP'},
+                {'epg_name': 's01-transit-ESG-CSR1k', 'encap': 'vlan-' + str(vlan_transit_encap_list[0])},
+                {'epg_name': 's02-transit-ESG-CSR1k', 'encap': 'vlan-' + str(vlan_transit_encap_list[1])},
+                {'epg_name': 's03-transit-ESG-CSR1k', 'encap': 'vlan-' + str(vlan_transit_encap_list[2])},
+                {'epg_name': 's04-transit-ESG-CSR1k', 'encap': 'vlan-' + str(vlan_transit_encap_list[3])},
+                {'epg_name': 's05-transit-ESG-CSR1k', 'encap': 'vlan-' + str(vlan_transit_encap_list[4])},
+                {'epg_name': 's06-transit-ESG-CSR1k', 'encap': 'vlan-' + str(vlan_transit_encap_list[5])}]
     }
 
     pol_uni = cobra.model.pol.Uni('')
