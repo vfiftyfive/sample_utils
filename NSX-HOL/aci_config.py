@@ -4,7 +4,7 @@
 #NSX-HOL-VMM is the VMM domain name
 #3201-3206 is a VLAN range to define explicitely encap for VMM domain bound EPGs
 #3211-3216 is another VLAN range to define explicitely encap for other VMM domain bound EPGs
-#This scrips is used to provision a tenant with the following configuration:
+#This script is used to provision a tenant with the following configuration:
 #  NSX-HOL (tenant)
 #       |
 #       VTEP (anp)
