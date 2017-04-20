@@ -24,8 +24,7 @@ def main():
                                                '172.16.5.1/24', '172.16.6.1/24']},
         'anp': {'anp_name': 'VTEP'},
         'epg': [{ 'epg_name': 's01-VTEP'}, { 'epg_name': 's02-VTEP'}, { 'epg_name': 's03-VTEP'},
-                { 'epg_name': 's04-VTEP'}, {'epg_name': 's05-VTEP'}, { 'epg_name': 's06-VTEP'},
-                {'epg_name': 'transit-ESG-CSR1k', 'encap': 'vlan-3220'}]
+                { 'epg_name': 's04-VTEP'}, {'epg_name': 's05-VTEP'}, { 'epg_name': 's06-VTEP'}
 
     }
 
