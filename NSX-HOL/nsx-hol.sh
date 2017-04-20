@@ -25,7 +25,7 @@ fi
 
 #Create multiple lists, ie. 1 per student based on a flat list containing all VMs. 3 VMs are allocated per student, so each list will contain 3 VMs. The name of the list is "host_list_n" where n is the student number
 export VLAN_MIN=3201
-export VLAN_MAX=3219
+export VLAN_MAX=3209
 declare -a vlan_id
 for i in $(seq 1 "${nbr_student}"); do
 	count=0
@@ -228,7 +228,7 @@ done
 		var_host_res="res_${i}[@]"
 		echo -e "For student $i, vCenter IP is ${vcenter_ip[$i-1]}, IP of nested hosts are: ${!var_host_res}"
 		echo -e "Now adding compute resources to vCenter..."
-		/usr/bin/env python ./post_vcsa.py ${vcenter_ip[$i-1]} administrator@${SSO_DOMAIN_NAME} ${VCSA_ROOT_PASSWORD} ${!var_host_res} ${vmnic} ${vlan_id[$i-1]}
+		/usr/bin/env python ./post_vcsa.py ${vcenter_ip[$i-1]} administrator@${SSO_DOMAIN_NAME} ${VCSA_ROOT_PASSWORD} ${!var_host_res} ${vmnic} ${vlan_id[$i-1]} $((${vlan_id[$i-1]} + 10))
 	done
 
 	#Use OVFTOOL to deploy VM Ubuntu images on student-n-02
