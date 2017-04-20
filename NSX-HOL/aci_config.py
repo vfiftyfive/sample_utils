@@ -25,7 +25,6 @@ def main():
         'anp': {'anp_name': 'VTEP'},
         'epg': [{ 'epg_name': 's01-VTEP'}, { 'epg_name': 's02-VTEP'}, { 'epg_name': 's03-VTEP'},
                 { 'epg_name': 's04-VTEP'}, {'epg_name': 's05-VTEP'}, { 'epg_name': 's06-VTEP'}]
-
     }
 
     pol_uni = cobra.model.pol.Uni('')
