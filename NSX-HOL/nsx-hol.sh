@@ -104,11 +104,11 @@ for host in ${compute_hosts}; do
  		${sshpass_cmd} ssh -o StrictHostKeyChecking=no root@"${host}" esxcli network firewall refresh
  		${sshpass_cmd} ssh -o StrictHostKeyChecking=no root@"${host}" 'if [ ! -d /store/firewall ]; then mkdir /store/firewall; fi'
  		${sshpass_cmd} ssh -o StrictHostKeyChecking=no root@"${host}" cp /etc/vmware/firewall/service.xml /store/firewall/service.xml
-		# $sshpass_cmd ssh -o StrictHostKeyChecking=no root@${host} 'sed -i "s/exit 0//" /etc/rc.local.d/local.sh'
- 	# 	$sshpass_cmd ssh -o StrictHostKeyChecking=no root@${host} 'echo -e "
- 	# 	cp /store/firewall/service.xml /etc/vmware/firewall/service.xml
- 	# 	esxcli network firewall refresh
- 	# 	exit 0" >> /etc/rc.local.d/local.sh'
+#		$sshpass_cmd ssh -o StrictHostKeyChecking=no root@${host} 'sed -i "s/exit 0//" /etc/rc.local.d/local.sh'
+#        $sshpass_cmd ssh -o StrictHostKeyChecking=no root@${host} 'echo -e "
+#        cp /store/firewall/service.xml /etc/vmware/firewall/service.xml
+# 	 	esxcli network firewall refresh
+# 	 	exit 0" >> /etc/rc.local.d/local.sh'
 	fi
 done
 
@@ -179,6 +179,7 @@ fi
 #Deploy vCenter for every student
 i=0
 for esxi_host in "${vcenter_host[@]}"; do
+
 	#use OVFTOOL to deploy VCSA
 	echo -e "\n$trailer" "Deploying vCenter Server Appliance Embedded w/PSC ${VCSA_VMNAME} ..."
 	"${OVFTOOL}" --acceptAllEulas --noSSLVerify --skipManifestCheck --X:injectOvfEnv --allowExtraConfig --X:enableHiddenProperties --X:waitForIp --sourceType=OVA --powerOn \
