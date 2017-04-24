@@ -1,1 +1,1 @@
-### Helpers for current projecst
+### Helpers for current projects
