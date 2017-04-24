@@ -1,4 +1,5 @@
+.AppleDouble
 main.py
-post_nsxm.py
-post_vcsa.py
 nsx-hol.sh
+post_vcsa.py
+
