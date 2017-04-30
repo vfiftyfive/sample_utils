@@ -19,7 +19,7 @@ def main():
         si = SmartConnect(host=h, user=user, pwd=password, port=port, sslContext=context)
         atexit.register(Disconnect, si)
         content = si.content
-        print "Adding NSX Licences on vCenter {}".format(h)
+        print "Adding Licences {} on vCenter {}".format(sys.argv[1], h)
         content.licenseManager.AddLicense(licenseKey=sys.argv[1])
 
 if __name__ == '__main__':
