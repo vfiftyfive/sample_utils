@@ -20,7 +20,7 @@ def main():
         atexit.register(Disconnect, si)
         content = si.content
         print "Adding NSX Licences on vCenter {}".format(h)
-        content.licenseManager.AddLicense(licenseKey="MH0VM-821EP-582E9-09926-30T0Q")
+        content.licenseManager.AddLicense(licenseKey=sys.argv[1])
 
 if __name__ == '__main__':
     sys.exit(main())
