@@ -5,7 +5,7 @@ import requests
 import atexit
 import ssl
 
-host = ['10.48.58.83', '10.48.58.86', '10.48.58.93', '10.48.58.95','10.48.58.97']
+host = ['10.48.58.83', '10.48.58.86', '10.48.58.93', '10.48.58.95','10.48.58.97', '10.48.58.99']
 user = 'administrator@cisco.local'
 password ='VMware1!'
 port = 443
